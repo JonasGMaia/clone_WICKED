@@ -1,0 +1,86 @@
+@use "patterns";
+
+@keyframes fadeInBackground {
+    from {
+        border: solid 2px patterns.$elphabaGreen;
+        background-color: #0000;
+    }
+    to {
+        border: solid 2px patterns.$elphabaGreenborder;
+        background-color: patterns.$elphabaGreen;
+    }
+}
+
+@keyframes fadeOutBackground {
+    from {
+        border: solid 2px patterns.$elphabaGreenborder;
+        background-color: patterns.$elphabaGreen;
+    }
+    to {
+        
+        border: solid 2px patterns.$elphabaGreen;
+        background-color: #0000;
+    }
+}
+
+.home{
+    margin-top: 72px;
+    width: 100vw;
+    
+    &_container{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        &_content{
+            position: absolute;
+            bottom: 16%;
+
+            button{
+                color:#fff;
+                padding: 9px 24px;
+                border-radius: 40px;
+                background-color: #0000;
+                border: solid 2px patterns.$elphabaGreen;
+                cursor: pointer;
+                animation: fadeOutBackground 0.4s forwards;
+
+        
+
+                &:hover{
+                    animation: fadeInBackground 0.4s forwards;
+                    border-color: patterns.$elphabaGreenborder;
+                    background-color: patterns.$elphabaGreen;
+                }
+            }
+        }
+
+        &_links{
+            position: absolute;
+            right: 40px;
+            bottom: 32px;
+
+            ul{
+                display: flex;
+                list-style: none;
+                align-items: center;
+                flex-flow: row nowrap;
+                gap:40px;
+            }
+
+            a{
+                text-decoration: none;
+            }
+
+            svg{
+                fill:#fff;
+                &:hover{
+                    fill: patterns.$secondaryTxt;
+                }
+            }
+        }
+
+    }
+
+
+}
