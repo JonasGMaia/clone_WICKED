@@ -1,0 +1,81 @@
+@use "patterns";
+
+
+.main-nav{
+    min-width: 100%;
+    background-color: #000;
+    position: absolute;
+    top:0px;
+    z-index: 1;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    transform: translateY(-20px);
+
+
+    &_container{
+        display: block;
+    }
+
+    &_menu{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        &_item{
+            margin: 14px 0;
+            display: flex;
+            justify-content: center;
+            a{
+                text-decoration: none;
+            }
+
+
+            p:hover, &--highlight p{
+                background:linear-gradient(90deg, #124e07, #bdea7c 35%, #e890af 65%, #70203b);
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;                
+            }
+
+            img{
+                max-width: 220px;
+                margin-bottom:32px;
+            }
+        }
+    }
+
+    .region{
+        display: flex;
+        background: transparent;
+        border: none;
+        align-items: center;
+        position: fixed;
+        left: 40px;
+        bottom: 32px;
+        z-index: 2;
+        cursor: pointer;
+
+        &:hover{
+            span{
+                color: patterns.$secondaryTxt;
+            }
+            svg{
+                fill: patterns.$secondaryTxt;
+            }
+        }
+
+        &_icon{
+            margin-right: 8px;
+        }
+
+        svg{
+            fill:#fff;
+        }
+    }
+}
+
+.main-nav--is-visible{
+    max-height: 100vh;
+    opacity: 1;
+    transform: translateY(0);
+}

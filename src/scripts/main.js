@@ -13,3 +13,19 @@ document.addEventListener('visibilitychange', () => {
         bgvideo.pause();
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mainNav = document.getElementById('mainNav');
+    const burgerMenuButtonHeader = document.querySelector('.header_container_button .burgerMenu');
+    const burgerMenuButtonNav = document.querySelector('#mainNav .burgerMenu');
+
+    function toggleNav(){
+        mainNav.classList.toggle('main-nav--is-visible');
+        burgerMenuButtonHeader.classList.toggle('burgerMenu--close');
+        burgerMenuButtonNav.classList.toggle('burgerMenu--close');
+    }
+
+    burgerMenuButtonHeader.parentElement.addEventListener('click', toggleNav);
+    burgerMenuButtonNav.parentElement.addEventListener('click', toggleNav);
+
+});

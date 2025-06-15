@@ -69,6 +69,7 @@
         background-color: #fff;
         height: 1px;
         width: 100%;
+        transition: all 0.3 ease;
 
         &--shorter{
             width: 75%;
@@ -81,3 +82,18 @@
         }
     }
 }
+
+.burgerMenu--close .burgerMenu_line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burgerMenu--close .burgerMenu_line:nth-child(2) {
+    opacity: 0;
+}
+
+.burgerMenu--close .burgerMenu_line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+
