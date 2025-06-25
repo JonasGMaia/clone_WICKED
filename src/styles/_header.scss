@@ -9,7 +9,7 @@
 
 .header{
     width: 100%;
-    position: absolute;
+    position: fixed;
     top:0;
 
     &_container{
@@ -30,6 +30,7 @@
             .share{
                 display: flex;
                 align-items: center;
+                z-index: 60;
                 &:hover{
                     span{
                         color: patterns.$secondaryTxt;
@@ -63,13 +64,12 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    
 
     &_line{
         background-color: #fff;
         height: 1px;
         width: 100%;
-        transition: all 0.3 ease;
+        transition: all 0.3s ease;
 
         &--shorter{
             width: 75%;
@@ -84,7 +84,7 @@
 }
 
 .burgerMenu--close .burgerMenu_line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(4.5px, 4.5px);
 }
 
 .burgerMenu--close .burgerMenu_line:nth-child(2) {
@@ -92,8 +92,5 @@
 }
 
 .burgerMenu--close .burgerMenu_line:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(4.5px, -4.5px);
 }
-
-
-

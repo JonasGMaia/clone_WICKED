@@ -1,0 +1,81 @@
+@use "patterns";
+
+.share-popout{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000bb;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    
+
+    &_container{
+        z-index: 70;
+        background-color: #f3f3f3;
+        width: 264px;
+        min-height: 130px;
+        border-radius: 6px;
+        position: absolute;
+        top: -300px;
+        right: 16px;
+        transition: top 0.4s ease-out;
+    }
+
+    &_headline{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 24px;
+        color:#0d0d0db3;
+        svg{
+            fill: #0d0d0db3;
+        }
+
+        button{
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    &_body{
+        padding: 0px 24px 24px;
+    }
+    
+
+    svg{
+        height: 16px;
+    }
+
+    &_list{
+        display: flex;
+        flex-wrap: wrap;
+        &_item{
+            list-style: none;
+            padding: 12px;
+            background-color: #fff;
+            margin: 8px 8px 0px 0px;
+            width: 40px;
+
+            &:hover{
+                box-shadow: 0 3px 0 rgba(0, 0, 0, .1);
+                transform: translateY(-3px);
+            }
+        }
+        
+    }
+}
+
+#menuShare.show{
+    top:16px;
+}
+
+.share-popout.show{
+    pointer-events: auto;
+    opacity: 1;
+    
+}

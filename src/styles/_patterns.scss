@@ -1,6 +1,8 @@
 $elphabaGreen: #14a905;
 $elphabaGreenborder:  #b9e5b4;
 $secondaryTxt:#ffffffb3;
+$tertiaryTxt:#ffffff4d;
+
 
 .text-btn{
     font-family: Poppins, sans-serif;
@@ -11,6 +13,20 @@ $secondaryTxt:#ffffffb3;
 .text-main{
     font-family: Poppins, sans-serif;
     font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.text-main-dark{
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(13, 13, 13, .7);
+}
+
+.text-small{
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
     font-weight: 400;
     color: #fff;
 }
@@ -28,6 +44,6 @@ $secondaryTxt:#ffffffb3;
 .text-region{
     font-family: Poppins, sans-serif;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 200;
     color: #fff;
 }

@@ -6,10 +6,10 @@
     background-color: #000;
     position: absolute;
     top:0px;
-    z-index: 1;
-    overflow: hidden;
+    z-index: 5;
+    overflow-y: hidden;
     max-height: 0;
-    opacity: 0;
+    opacity: 1;
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
     transform: translateY(-20px);
 
@@ -22,10 +22,14 @@
         display: flex;
         flex-direction: column;
         text-align: center;
+        opacity: 0;
+        overflow-y: scroll;
+        max-height: 100vh;
         &_item{
             margin: 14px 0;
             display: flex;
-            justify-content: center;
+            justify-content: center; 
+            opacity: 0;
             a{
                 text-decoration: none;
             }
@@ -53,7 +57,14 @@
         left: 40px;
         bottom: 32px;
         z-index: 2;
+        opacity: 0;
         cursor: pointer;
+
+        &--is-visible {
+            opacity: 1;
+            z-index: 5;
+            transition: all 1s ease;
+        }
 
         &:hover{
             span{
@@ -78,4 +89,13 @@
     max-height: 100vh;
     opacity: 1;
     transform: translateY(0);
+
+    .main-nav_menu_item{
+        opacity: 1;
+        transition: all 2s ease;
+    }
+}
+
+.main-nav_container--is-visible{
+    opacity: 1;
 }

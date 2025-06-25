@@ -2,11 +2,14 @@
 @use "header";
 @use "home";
 @use "nav";
+@use "footer";
+@use "share-popout";
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scrollbar-width: none;
 }
 
 body{

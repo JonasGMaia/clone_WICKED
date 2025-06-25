@@ -28,7 +28,7 @@
             <button class="header_container_button header_container_button--gradient">
                 <p class="text-btn">Save to Calendar</p>
             </button>
-            <button class="header_container_button">
+            <button class="header_container_button" id="openShareMenu">
                 <div class="share">
                     <span class="text-main">Share</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-box-arrow-up" viewBox="0 0 16 16">
@@ -46,7 +46,7 @@
                     <div class="burgerMenu_line"></div>
                 </div>
             </button>
-            <button class="header_container_button">
+            <!--<button class="header_container_button">
                 <div class="share" style="position: fixed; top:32px; right: 40px;">
                     <span class="text-main">Share</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-box-arrow-up" viewBox="0 0 16 16">
@@ -54,9 +54,10 @@
                         <path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708z"/>
                     </svg>
                 </div>
-            </button>
+            </button>-->
+            
             <div class="main-nav_container">
-                <ul class="main-nav_menu">
+                <ul id = "mainNavMenu" class="main-nav_menu">
                     <li class="main-nav_menu_item"><img src="dist/media/imgNav.png" alt=""></li>
                     <li class="main-nav_menu_item main-nav_menu_item--highlight"><a class="text-nav" href="#"><p>HOME</p></a></li>
                     <li class="main-nav_menu_item"><a class="text-nav" href="#"><p>REMINDER</p></a></li>
@@ -65,7 +66,7 @@
                     <li class="main-nav_menu_item"><a class="text-nav" href="#"><p>GALLERY</p></a></li>
                 </ul>
             </div>
-            <button class="region">
+            <button id="region" class="region">
                 <div class="region_icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
                         <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
@@ -73,7 +74,7 @@
                 </div>
                 <span class="text-region">US</span>
             </button>
-            <div class="home_container_links" style="position: fixed; bottom: 32px; right: 40px;">
+            <!--<div class="home_container_links" style="position: absolute; bottom: 32px; right: 40px;">
                 <ul>
                     <li><a href="https://www.facebook.com/wickedmovie">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
@@ -101,16 +102,51 @@
                         </svg>
                     </a></li>
                 </ul>
-            </div>
+            </div>-->
         </nav>
     </header>
+    <div class="share-popout" id="overlay">
+        <div class="share-popout_container" id="menuShare">
+            <div class="share-popout_headline">
+                <p class="text-main-dark">Create social post</p>
+                <button id="closeShareMenu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M7.292 8L1.146 1.854a.502.502 0 01.708-.708L8 7.292l6.146-6.146a.502.502 0 01.708.708L8.708 8l6.146 6.146a.502.502 0 01-.708.708L8 8.708l-6.146 6.146A.502.502 0 011.5 15s-.256-.049-.354-.146a.502.502 0 010-.708L7.292 8z" fill-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            <div class="share-popout_body">
+                <ul class="share-popout_list">
+                    <li class="share-popout_list_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img"><path d="M13 3h-2V2a1 1 0 00-1-1H3a1 1 0 00-1 1v10a1 1 0 001 1h2v1a1 1 0 001 1h7a1 1 0 001-1V4a1 1 0 00-1-1zM3 12V2h7v1H6a1 1 0 00-1 1v8H3zm10 2H6V4h7v10z"></path></svg>
+                    </li>
+                    <li class="share-popout_list_item">
+                        <svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg" role="img" class="sharePopout__twitter__ZX1FA"><path d="M13.4019 11.2735L18.6575 5H17.4121L12.8487 10.4472L9.20386 5H5L10.5117 13.2372L5 19.8159H6.24548L11.0646 14.0635L14.9138 19.8159H19.1176L13.4016 11.2735H13.4019ZM11.6961 13.3097L11.1376 12.4895L6.69425 5.9628H8.60724L12.1931 11.2301L12.7515 12.0503L17.4127 18.8969H15.4997L11.6961 13.31V13.3097Z"></path></svg>
+                    </li>
+                    <li class="share-popout_list_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"  fill="rgb(24, 119, 242)" role="img" class="sharePopout__facebook__iYY8S"><path d="M15,3C8.373,3,3,8.373,3,15c0,6.016,4.432,10.984,10.206,11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475,1.693-5,4.581-5 c1.383,0,2.115,0.103,2.461,0.149v2.753h-1.97c-1.226,0-1.654,1.163-1.654,2.473v1.724h3.593L19.73,18.18h-3.106v8.697 C22.481,26.083,27,21.075,27,15C27,8.373,21.627,3,15,3z"></path></svg>
+                    </li>
+                    <li class="share-popout_list_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="rgb(189, 8, 28)" role="img" class="sharePopout__pinterest__xLsHm"><path d="M11.493 3.23C10.667 2.437 9.523 2 8.273 2c-1.908 0-3.082.783-3.731 1.439-.8.808-1.258 1.882-1.258 2.947 0 1.335.559 2.361 1.494 2.743a.487.487 0 00.188.039c.197 0 .354-.129.408-.336.033-.12.105-.413.137-.54.068-.252.013-.372-.136-.548-.27-.321-.397-.699-.397-1.192 0-1.464 1.09-3.02 3.11-3.02 1.603 0 2.599.911 2.599 2.378 0 .926-.2 1.782-.561 2.413-.252.438-.695.961-1.373.961a.912.912 0 01-.724-.331.83.83 0 01-.146-.723c.071-.303.169-.618.263-.923.173-.557.335-1.084.335-1.503 0-.718-.441-1.2-1.098-1.2-.835 0-1.489.848-1.489 1.93 0 .531.141.927.205 1.08l-.849 3.594c-.069.291-.482 2.595.202 2.778.768.207 1.455-2.037 1.524-2.29.057-.206.255-.986.376-1.465.37.357.968.598 1.548.598 1.095 0 2.079-.493 2.773-1.387.672-.867 1.042-2.077 1.042-3.406.001-1.036-.445-2.06-1.222-2.806z"></path></svg>
+                    </li>
+                    <li class="share-popout_list_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="rgb(53, 70, 93)" role="img" class="sharePopout__tumblr__Wdn4n"><path d="M11.732 11.117a.232.232 0 00-.236.01c-.536.353-1.08.531-1.616.531-.288 0-.536-.064-.758-.197a.84.84 0 01-.341-.381c-.049-.129-.048-.477-.047-.958V7.189h2.437a.231.231 0 00.231-.231V4.899a.231.231 0 00-.231-.231H8.733V2.231A.23.23 0 008.502 2H6.861a.23.23 0 00-.229.203c-.069.564-.197 1.033-.381 1.394a2.95 2.95 0 01-.722.92c-.24.205-.652.403-1.223.589a.23.23 0 00-.159.219v1.634c0 .127.103.231.231.231h1.336v3.815c0 .562.06.985.182 1.294.125.313.347.608.66.877.308.264.683.47 1.115.614.42.136.753.21 1.316.21.476 0 .929-.049 1.348-.147a7.1 7.1 0 001.385-.505.23.23 0 00.133-.209V11.32a.232.232 0 00-.121-.203z"></path></svg>
+                    </li>
+                    <li class="share-popout_list_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img"><path d="M14 3H2a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zm-1.519 1L8 7.671 3.519 4h8.962zM14 12H2V4l5.341 4.424a1 1 0 001.318 0L14 4v8z"></path></svg>
+                    </li>
+                    <li class="share-popout_list_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="rgb(0, 136, 204)" role="img" class="sharePopout__telegram__kgz6g"><path d="M13.557 2.799L2.209 7.176a.326.326 0 00.003.61l2.765 1.032 1.07 3.442c.069.22.338.302.517.156l1.541-1.256a.462.462 0 01.561-.016l2.78 2.018a.325.325 0 00.51-.197l2.036-9.796a.325.325 0 00-.435-.37zm-2.165 2.29L6.933 9.235a.919.919 0 00-.286.552l-.152 1.127c-.02.151-.232.165-.273.02L5.637 8.88a.544.544 0 01.238-.612l5.404-3.328c.097-.06.197.072.113.149z"></path></svg>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <section class="home">
         <container class="home_container">
             <div class="home_container_content">
                 <button class="text-btn">Watch Trailer</button>
             </div>
             <div class="home_container_links">
-                <ul>
+                <ul class="linksList">
                     <li><a href="https://www.facebook.com/wickedmovie">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                             <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
@@ -140,7 +176,38 @@
             </div>
         </container>
     </section>
-    
+    <footer class="footer">
+        <div class="footer_container">
+            <div class="footer_content">
+                <div class="footer_content_logos">
+                    <img src="dist/media/legal-logos-wicked.png" alt="">
+                </div>
+            </div>
+            <div class="footer_content">
+                <ul class="footer_content_links">
+                    <li class="footer_content_links_item text-small">Ad Choices</li>
+                    <li class="footer_content_links_item text-small">Privacy Policy</li>
+                    <li class="footer_content_links_item text-small">Terms of Service</li>
+                    <li class="footer_content_links_item text-small">Cookie Notice</li>
+                    <li class="footer_content_links_item text-small">Filmratings.com</li>
+                    <li class="footer_content_links_item text-small">MPA.ORG</li>
+                    <li class="footer_content_links_item footer_content_links_item--noAfter text-small">Feedback</li>
+                </ul>
+            </div>
+            <div class="footer_content">
+                <ul class="footer_content_copyright">
+                    <div class="footer_content_copyright_item text-small"><p style="cursor: pointer; margin-right: 0;">MOVIE PLATFORM © 2025 POWSTER</p></div>
+                    <div class="footer_content_copyright_item text-small"><p>© 2025 Universal Pictures. ALL RIGHTS RESERVED.</p></div>
+                    <div class="footer_content_copyright_item text-small"><p>Watch the trailer for Wicked: For Good on the official movie site.</p></div>
+                </ul>
+            </div>
+            <button class="footer_button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+                </svg>
+            </button>
+        </div>
+    </footer>
 </body>
 <script src="src/scripts/main.js"></script>
 </html>

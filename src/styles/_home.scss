@@ -26,6 +26,7 @@
 .home{
     margin-top: 72px;
     width: 100vw;
+    position: absolute;
     
     
     &_container{
@@ -34,8 +35,9 @@
         align-items: center;
         flex-direction: column;
         &_content{
-            position: absolute;
+            position: fixed;
             bottom: 16%;
+            z-index: -1;
 
             button{
                 color:#fff;
@@ -57,9 +59,10 @@
         }
 
         &_links{
-            position: absolute;
+            position: fixed;
             right: 40px;
-            bottom: 32px;
+            bottom:32px;
+            z-index: 3;
             
 
             ul{
