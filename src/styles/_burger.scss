@@ -15,6 +15,10 @@
     background-color:transparent;
     border: none;
     cursor: pointer;
+
+    @media (max-width: 768px){
+        left: 24px;
+    }
     
 
     &_line{

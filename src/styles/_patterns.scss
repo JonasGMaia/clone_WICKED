@@ -52,6 +52,7 @@ $bgdark:#000000bb;
     font-size: 12px;
     font-weight: 400;
     color: #fff;
+    line-height: 16px;
     &--darken{
         font-family: Poppins, sans-serif;
         font-size: 12px;
@@ -68,6 +69,10 @@ $bgdark:#000000bb;
     line-height: 56px;
     color: #fff;
     
+    @media (max-width: 768px){
+        font-size: 32px;
+        line-height: 36px;
+    }
 }
 
 .text-region{

@@ -25,11 +25,26 @@ body{
     z-index: -1;
     position: fixed;
     top:0;
-    video{
+    #bgTitleVideo{
         display: block;
         margin: auto;
         height: 100%;
         width: 100%;
+
+        @media (max-width: 768px){
+            display: none;
+        }
+    }
+    #bgTitleVideoMobile{
+        display: none;
+        @media (max-width: 768px){
+            display: block;
+            margin: auto;
+            height: 100%;
+            width: 100%;
+        }
     }
 }
+
+
 

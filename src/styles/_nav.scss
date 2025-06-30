@@ -1,6 +1,7 @@
 @use "patterns";
 
 
+
 .main-nav{
     min-width: 100%;
     background-color: #000;
@@ -16,6 +17,11 @@
 
     &_container{
         display: block;
+        @media (max-width: 768px){
+            display: grid;
+            place-items:center;
+            min-height: 100vh;
+        }
     }
 
     &_menu{
@@ -25,6 +31,11 @@
         opacity: 0;
         overflow-y: scroll;
         max-height: 100vh;
+        @media (max-width: 768px){
+            width: 100%;
+            padding: 0px 56px;
+            justify-content: center;
+        }
         &_item{
             margin: 14px 0;
             display: flex;
@@ -44,6 +55,9 @@
             img{
                 max-width: 220px;
                 margin-bottom:32px;
+                @media (max-width: 768px){
+                    max-width: 300px;
+                }
             }
         }
     }
@@ -59,11 +73,15 @@
         z-index: 2;
         opacity: 0;
         cursor: pointer;
+        @media (max-width: 768px){
+            left: 24px;
+            bottom: 20px;
+        }
 
         &--is-visible {
             opacity: 1;
             z-index: 5;
-            transition: all 1s ease;
+            transition: all 3s ease;
         }
 
         &:hover{
@@ -89,6 +107,9 @@
     max-height: 100vh;
     opacity: 1;
     transform: translateY(0);
+    @media (max-width: 768px){
+        height: 100vh;
+    }
 
     .main-nav_menu_item{
         opacity: 1;

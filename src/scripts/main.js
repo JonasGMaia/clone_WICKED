@@ -1,6 +1,9 @@
 const bgvideo = document.getElementById('bgTitleVideo');
+const bgMobile = document.getElementById('bgTitleVideoMobile');
 
 bgvideo.play().catch(error => {
+            console.log("autoplay impedido pelo navegador")});
+bgMobile.play().catch(error => {
             console.log("autoplay impedido pelo navegador")});
 
 document.addEventListener('visibilitychange', () => {
@@ -8,9 +11,13 @@ document.addEventListener('visibilitychange', () => {
         bgvideo.currentTime = 2;
         bgvideo.play().catch(error => {
             console.log("autoplay impedido pelo navegador")});
+        bgMobile.currentTime = 1;
+        bgMobile.play().catch(error => {
+            console.log("autoplay impedido pelo navegador")});
 
     } else{
         bgvideo.pause();
+        bgMobile.pause();
     }
 });
 
@@ -43,6 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const calendarReminder = document.getElementById('calendarReminder');
     const calendarReminderContainer = document.getElementById('calendarReminder_container');
     isCalendarOpen = false;
+
+    const linksMobile = document.getElementById('homeLinks');
+
+    
+    
+
+
 
     function openCalendar(){
         calendarReminder.classList.add('show');
@@ -187,14 +201,17 @@ document.addEventListener('DOMContentLoaded', () => {
             mainNav.classList.toggle('main-nav--is-visible');
             mainNavMenu.classList.toggle('main-nav_container--is-visible');
             region.classList.toggle('region--is-visible');
+            linksMobile.classList.toggle('home_container_links--is-visible');
 
             let isNavOpen = mainNav.classList.contains('main-nav--is-visible');
 
             if (mainNav.classList.contains('main-nav--is-visible')) {
                 footer.style.visibility = "hidden";
+                
                 isFooterVisible = false;
                 return;
             } else {
+                
                 footer.style.visibility = "visible";
                 handleScroll();
             }

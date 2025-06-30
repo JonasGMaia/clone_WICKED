@@ -1,4 +1,5 @@
 @use "patterns";
+@use "nav";
 
 @keyframes fadeInBackground {
     from {
@@ -38,6 +39,9 @@
             position: fixed;
             bottom: 16%;
             z-index: -1;
+            @media (max-width: 768px){
+                bottom: 48px;
+            }
 
             button{
                 color:#fff;
@@ -63,6 +67,10 @@
             right: 40px;
             bottom:32px;
             z-index: 3;
+            @media (max-width: 768px){
+                right: 24px;
+                bottom:20px;
+            }
             
 
             ul{
@@ -71,6 +79,10 @@
                 align-items: center;
                 flex-flow: row nowrap;
                 gap:40px;
+
+                @media (max-width: 768px){
+                    gap:36px
+                }
             }
 
             a{
@@ -79,13 +91,33 @@
 
             svg{
                 fill:#fff;
+                width:24px; 
+                height:24px;
                 &:hover{
                     fill: patterns.$secondaryTxt;
                 }
+
+                @media (max-width: 768px){
+                    width:18px; 
+                    height:18px;
+                }
+            }
+
+            @media (max-width: 768px){
+                visibility: hidden;
+                opacity: 0;
+                //transition: opacity .2s, visibility .2s;
+                
             }
         }
 
     }
 
 
+}
+
+.home_container_links--is-visible{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 3s ease, visibility .3s ease;
 }
