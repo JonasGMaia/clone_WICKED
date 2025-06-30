@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+}
+.header_container {
+  height: 72px;
+  padding: 0 40px;
+}
+.header_container_button {
+  background: none;
+  border: none;
+}
+
+.burgerMenu {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+.burgerMenu_line {
+  background-color: #fff;
+  height: 1px;
+  width: 100%;
+}
+.burgerMenu_line--shorter {
+  width: 70%;
+}
