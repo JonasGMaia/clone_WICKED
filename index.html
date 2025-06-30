@@ -10,22 +10,81 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="trailer-popout show" id="trailer-overlay">
+        <div class="trailer-popout_container">
+            <iframe width="681" height="383" src="https://www.youtube.com/embed/vt98AlBDI9Y?enablejsapi=1" title="Wicked: For Good | Official Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            
+        </div>
+    </div>
     <div class="bgTitle">
         <video id="bgTitleVideo" autoplay muted>
             <source src="dist/media/bg.mp4" type="video/mp4">
         </video>
     </div>
     
+    <div class="burgerMenu burgerMenu--close">
+        <div class="burgerMenu_line"></div>
+        <div class="burgerMenu_line burgerMenu_line--shorter"></div>
+        <div class="burgerMenu_line"></div>
+    </div>
+    
+    <div id="calendarReminder" class="calendarReminder">
+        <div class="calendarReminder_container" id="calendarReminder_container">
+            <div class="calendarReminder_container_header">
+                <div class="calendarReminder_container_header_hole"></div>
+                <div class="calendarReminder_container_header_hole"></div>
+            </div>
+            <div class="calendarReminder_container_content">
+                <div class="calendarReminder_headline">
+                    <ul>
+                        <li class="reminder-line">
+                            <p class="text-main-bold">Wicked: For Good: Theatrical Premiere</p>
+                        </li>
+                        <li class="reminder-line">
+                            <p class="text-btn-small">Friday, 21 Nov 2025</p>
+                        </li>
+                        <li class="reminder-line">
+                            <p class="text-small--darken">www.wickedmovie.com</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="calendarReminder_body">
+                    <span class="text-btn-small--lighten">Choose a calendar</span>
+                    <ul>
+                        <li>
+                            <button>
+                                <img src="dist/media/googlecal.png" alt="">
+                                <p class="text-btn">Google Calendar</p>
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                <img src="dist/media/ical.png" alt="">
+                                <p class="text-btn">Apple ICal</p>
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                <img src="dist/media/outlook.png" alt="">
+                                <p class="text-btn">Microsoft Outlook</p>
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                <img src="dist/media/yahoo.png" alt="">
+                                <p class="text-btn">Yahoo</p>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
     <header class="header">
         <div class="header_container">
-            <button class="header_container_button">
-                <div class="burgerMenu">
-                    <div class="burgerMenu_line"></div>
-                    <div class="burgerMenu_line burgerMenu_line--shorter"></div>
-                    <div class="burgerMenu_line"></div>
-                </div>
-            </button>
-            <button class="header_container_button header_container_button--gradient">
+            <button id="OpenCalendarReminder" class="header_container_button header_container_button--gradient">
                 <p class="text-btn">Save to Calendar</p>
             </button>
             <button class="header_container_button" id="openShareMenu">
@@ -39,13 +98,6 @@
             </button>
         </div>
         <nav id="mainNav" class="main-nav">
-            <button class="header_container_button">
-                <div class="burgerMenu" style="position: fixed; top:32px; left:40px;">
-                    <div class="burgerMenu_line"></div>
-                    <div class="burgerMenu_line burgerMenu_line--shorter"></div>
-                    <div class="burgerMenu_line"></div>
-                </div>
-            </button>
             <!--<button class="header_container_button">
                 <div class="share" style="position: fixed; top:32px; right: 40px;">
                     <span class="text-main">Share</span>
@@ -143,7 +195,7 @@
     <section class="home">
         <container class="home_container">
             <div class="home_container_content">
-                <button class="text-btn">Watch Trailer</button>
+                <button id="trailer-btn" class="text-btn">Watch Trailer</button>
             </div>
             <div class="home_container_links">
                 <ul class="linksList">

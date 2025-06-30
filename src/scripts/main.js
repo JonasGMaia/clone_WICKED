@@ -25,14 +25,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const footer = document.querySelector('.footer');
     let lastScrollY = window.scrollY;
     let isFooterVisible = false;
-    let isNavOpen = false;
+    
 
     const mainNav = document.getElementById('mainNav');
     const region = document.getElementById('region');
     const mainNavMenu = document.getElementById('mainNavMenu');
     
-    const burgerMenuButtonHeader = document.querySelector('.header_container_button .burgerMenu');
-    const burgerMenuButtonNav = document.querySelector('#mainNav .burgerMenu');
+    const burgerMenuButtonHeader = document.querySelector('.burgerMenu');
+    
+    const trailerOverlay = document.getElementById('trailer-overlay');
+    const trailerIframe = trailerOverlay.querySelector('iframe');
+    let isTrailerOpen = true;
+
+    const trailerButton = document.getElementById('trailer-btn');
+
+    const OpenCalendarReminder = document.getElementById('OpenCalendarReminder');
+    const calendarReminder = document.getElementById('calendarReminder');
+    const calendarReminderContainer = document.getElementById('calendarReminder_container');
+    isCalendarOpen = false;
+
+    function openCalendar(){
+        calendarReminder.classList.add('show');
+        calendarReminder.style.visibility = 'visible';
+        burgerMenuButtonHeader.classList.add('burgerMenu--close');
+        OpenCalendarReminder.classList.add('header_container_button--gradient--hide');
+        isCalendarOpen = true;
+    }
+
+    function closeCalendar(){
+        if (isCalendarOpen) {
+            calendarReminder.classList.remove('show');
+            calendarReminder.style.visibility = 'hidden';
+            OpenCalendarReminder.classList.remove('header_container_button--gradient--hide');
+
+            if (burgerMenuButtonHeader.classList.contains('burgerMenu--close')){
+                burgerMenuButtonHeader.classList.remove('burgerMenu--close'); 
+            }
+            isCalendarOpen = false;
+        }
+    }
+
+    OpenCalendarReminder.addEventListener('click', openCalendar);
+    calendarReminder.addEventListener('click', closeCalendar);
+    calendarReminderContainer.addEventListener('click', (event) => {
+        event.stopPropagation();
+    })
 
     function openMenu(){
         overlay.style.display = "block";
@@ -65,38 +102,125 @@ document.addEventListener('DOMContentLoaded', () => {
         event.stopPropagation();
     });
 
-    function toggleNav(){
-        mainNav.classList.toggle('main-nav--is-visible');
-        mainNavMenu.classList.toggle('main-nav_container--is-visible');
-        region.classList.toggle('region--is-visible');
+    function closeTrailerPopout() {
+        if (isTrailerOpen) {
+            trailerOverlay.classList.remove('show');
+            burgerMenuButtonHeader.classList.remove('burgerMenu--close');
+            isTrailerOpen = false;
+            /*if (trailerIframe && trailerIframe.src.includes("youtube.com")) { 
+                trailerIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            }
+            isTrailerOpen = false;
+            const currentSrc = trailerIframe.src;
+            trailerIframe.src = ''; 
+            trailerIframe.src = currentSrc;*/
+            if (trailerIframe) {
+                // Comando para PAUSAR o vídeo (tentativa)
+                trailerIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                
+                // Reinicia o src do iframe para garantir que ele volte ao estado inicial (parado)
+                // e comece do zero na próxima vez que for aberto.
+                // Isso pode causar um pequeno "flash" visual.
+                const currentSrc = trailerIframe.src;
+                trailerIframe.src = '';
+                trailerIframe.src = currentSrc;
+            }
 
-        isNavOpen = mainNav.classList.contains('main-nav--is-visible');
-
-        if (isNavOpen) {
-            footer.classList.remove('footer--is-visible');
-            isFooterVisible = false; }
-
-        else{
-            handleScroll();
+            if (burgerMenuButtonHeader.classList.contains('burgeMenu--close')) {
+                burgerMenuButtonHeader.classList.remove('burgerMenu--close');
+                mainNav.classList.remove('main-nav--is-visible');
+                mainNavMenu.classList.remove('main-nav_container--is-visible');
+                region.classList.remove('region--is-visible');
+            }
         }
-        
-        burgerMenuButtonHeader.classList.toggle('burgerMenu--close');
-        burgerMenuButtonNav.classList.toggle('burgerMenu--close');
     }
 
-    burgerMenuButtonHeader.parentElement.addEventListener('click', toggleNav);
-    burgerMenuButtonNav.parentElement.addEventListener('click', toggleNav);
+    trailerOverlay.addEventListener('click', closeTrailerPopout);
+    trailerOverlay.querySelector('.trailer-popout_container').addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    function openTrailerPopout() {
+        if (!isTrailerOpen) {
+            trailerOverlay.classList.add('show');
+            trailerOverlay.style.visibility = 'visible';
+            isTrailerOpen = true;
+            
+
+            if (!burgerMenuButtonHeader.classList.contains('burgerMenu--close')) {
+                burgerMenuButtonHeader.classList.add('burgerMenu--close');
+            }
+            mainNav.classList.remove('main-nav--is-visible');
+            mainNavMenu.classList.remove('main-nav_container--is-visible');
+            region.classList.remove('region--is-visible');
+
+            if (trailerIframe) {
+                // É necessário um pequeno atraso para garantir que o iframe esteja "pronto"
+                // para receber o comando após ser exibido.
+                setTimeout(() => {
+                    trailerIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                }, 100); // Pequeno atraso, pode ser ajustado se necessário
+            }
+
+        }
+    }
+
+    if (trailerButton){
+        trailerButton.addEventListener('click', openTrailerPopout);
+    }
+
+    
 
 
-    const handleScroll = () => window.scrollY;
+    function toggleNav(){
+        if (isCalendarOpen) {
+            burgerMenuButtonHeader.classList.remove('burgerMenu--close');
+            closeCalendar();
+            isCalendarOpen = false;
+            return;
+        }
+        if (isTrailerOpen) {
+            burgerMenuButtonHeader.classList.remove('burgerMenu--close');
+            closeTrailerPopout();
+        }else{
+            burgerMenuButtonHeader.classList.toggle('burgerMenu--close');
+            mainNav.classList.toggle('main-nav--is-visible');
+            mainNavMenu.classList.toggle('main-nav_container--is-visible');
+            region.classList.toggle('region--is-visible');
+
+            let isNavOpen = mainNav.classList.contains('main-nav--is-visible');
+
+            if (mainNav.classList.contains('main-nav--is-visible')) {
+                footer.style.visibility = "hidden";
+                isFooterVisible = false;
+                return;
+            } else {
+                footer.style.visibility = "visible";
+                handleScroll();
+            }
+        }
+    };
+
+    burgerMenuButtonHeader.addEventListener('click', toggleNav);
+
+
+    
+
+
+    const handleScroll = () => {
         const curentScrollY = window.scrollY;
         const documentHeight = document.body.offsetHeight;
         const viewportHeight = window.innerHeight;
         const scrollThreshold = 100;
 
-        if (isNavOpen) {
-            return; 
+        let isNavCurrentlyOpen = mainNav.classList.contains('main-nav--is-visible');
+
+        if (mainNav.classList.contains('main-nav--is-visible') || trailerOverlay.classList.contains('show')) {
+            footer.classList.remove('footer--is-visible');
+            isFooterVisible = false;
+            return;
         }
+
 
         if (currentScrollY + viewportHeight >= documentHeight - scrollThreshold) {
             if (!isfootervisible){
@@ -110,5 +234,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 isFooterVisible = false;
             }
         }
+        lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    trailerOverlay.addEventListener('transitionend', (event) => {
+        if (event.propertyName === 'opacity' && !trailerOverlay.classList.contains('show')) {
+            trailerOverlay.style.visibility = 'hidden';
+        }
+    });
+
+    if (isTrailerOpen) {
+        mainNav.classList.remove('main-nav--is-visible');
+        mainNavMenu.classList.remove('main-nav_container--is-visible');
+        region.classList.remove('region--is-visible');
+        burgerMenuButtonHeader.classList.add('burgerMenu--close');
+    }
 
 });
+
